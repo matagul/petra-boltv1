@@ -490,6 +490,10 @@ class LuxuryCasinoApp {
         this.renderReviews(content.reviews);
         this.renderTips(content.tips);
         this.renderBanking(content.banking);
+        this.renderBonuses(content.bonuses);
+        this.renderMobile(content.mobile);
+        this.renderSupport(content.support);
+        this.renderResponsible(content.responsible);
         this.renderFooter(content.footer);
     }
     
@@ -726,6 +730,194 @@ class LuxuryCasinoApp {
         badges.setAttribute('data-aos-delay', '400');
         
         container.appendChild(badges);
+    }
+    
+    renderBonuses(bonuses) {
+        const content = this.data[this.currentLanguage];
+        
+        // Create bonuses section
+        const bonusesSection = document.createElement('section');
+        bonusesSection.className = 'bonuses parallax-container';
+        bonusesSection.innerHTML = `
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">
+                    ${content.sectionTitles?.bonuses || 'Bonus Comparison Guide'}
+                </h2>
+                <div class="bonuses-content" id="bonuses-content"></div>
+            </div>
+        `;
+        
+        // Insert after banking section
+        const bankingSection = document.querySelector('.banking');
+        bankingSection.insertAdjacentElement('afterend', bonusesSection);
+        
+        const container = document.getElementById('bonuses-content');
+        const grid = document.createElement('div');
+        grid.className = 'bonuses-grid';
+        
+        bonuses.forEach((bonus, index) => {
+            const card = document.createElement('div');
+            card.className = 'bonus-card';
+            
+            card.innerHTML = `
+                <div class="bonus-icon">${bonus.icon}</div>
+                <h3 class="bonus-title">${bonus.title}</h3>
+                <p class="bonus-description">${bonus.description}</p>
+            `;
+            
+            card.setAttribute('data-aos', 'flip-left');
+            card.setAttribute('data-aos-delay', (index * 150).toString());
+            
+            grid.appendChild(card);
+        });
+        
+        container.appendChild(grid);
+    }
+    
+    renderMobile(mobile) {
+        const content = this.data[this.currentLanguage];
+        
+        // Create mobile section
+        const mobileSection = document.createElement('section');
+        mobileSection.className = 'mobile parallax-container';
+        mobileSection.innerHTML = `
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">
+                    ${content.sectionTitles?.mobile || 'Mobile Gaming Experience'}
+                </h2>
+                <div class="mobile-content" id="mobile-content"></div>
+            </div>
+        `;
+        
+        // Insert after bonuses section
+        const bonusesSection = document.querySelector('.bonuses');
+        bonusesSection.insertAdjacentElement('afterend', mobileSection);
+        
+        const container = document.getElementById('mobile-content');
+        const grid = document.createElement('div');
+        grid.className = 'mobile-grid';
+        
+        mobile.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'mobile-card';
+            
+            card.innerHTML = `
+                <div class="mobile-icon">${item.icon}</div>
+                <h3 class="mobile-title">${item.title}</h3>
+                <p class="mobile-description">${item.description}</p>
+            `;
+            
+            card.setAttribute('data-aos', 'zoom-in-up');
+            card.setAttribute('data-aos-delay', (index * 100).toString());
+            
+            grid.appendChild(card);
+        });
+        
+        container.appendChild(grid);
+    }
+    
+    renderSupport(support) {
+        const content = this.data[this.currentLanguage];
+        
+        // Create support section
+        const supportSection = document.createElement('section');
+        supportSection.className = 'support parallax-container';
+        supportSection.innerHTML = `
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">
+                    ${content.sectionTitles?.support || 'Customer Support Analysis'}
+                </h2>
+                <div class="support-content" id="support-content"></div>
+            </div>
+        `;
+        
+        // Insert after mobile section
+        const mobileSection = document.querySelector('.mobile');
+        mobileSection.insertAdjacentElement('afterend', supportSection);
+        
+        const container = document.getElementById('support-content');
+        const grid = document.createElement('div');
+        grid.className = 'support-grid';
+        
+        support.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'support-card';
+            
+            card.innerHTML = `
+                <div class="support-icon">${item.icon}</div>
+                <h3 class="support-title">${item.title}</h3>
+                <p class="support-description">${item.description}</p>
+            `;
+            
+            card.setAttribute('data-aos', 'slide-right');
+            card.setAttribute('data-aos-delay', (index * 120).toString());
+            
+            grid.appendChild(card);
+        });
+        
+        container.appendChild(grid);
+    }
+    
+    renderResponsible(responsible) {
+        const content = this.data[this.currentLanguage];
+        
+        // Create responsible section
+        const responsibleSection = document.createElement('section');
+        responsibleSection.className = 'responsible parallax-container';
+        responsibleSection.innerHTML = `
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">
+                    ${content.sectionTitles?.responsible || 'Responsible Gaming'}
+                </h2>
+                <div class="responsible-content" id="responsible-content"></div>
+            </div>
+        `;
+        
+        // Insert after support section
+        const supportSection = document.querySelector('.support');
+        supportSection.insertAdjacentElement('afterend', responsibleSection);
+        
+        const container = document.getElementById('responsible-content');
+        const grid = document.createElement('div');
+        grid.className = 'responsible-grid';
+        
+        responsible.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'responsible-card';
+            
+            card.innerHTML = `
+                <div class="responsible-icon">${item.icon}</div>
+                <h3 class="responsible-title">${item.title}</h3>
+                <p class="responsible-description">${item.description}</p>
+            `;
+            
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index * 100).toString());
+            
+            grid.appendChild(card);
+        });
+        
+        container.appendChild(grid);
+        
+        // Add responsible gaming notice
+        const notice = document.createElement('div');
+        notice.className = 'responsible-notice';
+        notice.innerHTML = `
+            <div class="notice-content">
+                <h4>🛡️ Our Commitment to Responsible Gaming</h4>
+                <p>We are committed to providing a safe and responsible gaming environment. If you or someone you know has a gambling problem, please seek help from professional organizations.</p>
+                <div class="help-links">
+                    <a href="https://www.gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>
+                    <a href="https://www.ncpgambling.org" target="_blank" rel="noopener">National Council on Problem Gambling</a>
+                    <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a>
+                </div>
+            </div>
+        `;
+        
+        notice.setAttribute('data-aos', 'fade-up');
+        notice.setAttribute('data-aos-delay', '400');
+        
+        container.appendChild(notice);
     }
     
     renderFooter(footer) {
