@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petra.bet Casino Games</title>
+    <meta name="description" content="Browse and play the best live casino games at Petra.bet. Lightning Dice, Sweet Bonanza, Crazy Time, and more.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .games-section {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+      }
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        justify-items: center;
+        align-items: stretch;
+        margin-top: 2.5rem;
+      }
+      .game-card-3d {
+        width: 167px;
+        height: 260px;
+        background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+        border-radius: 1.2rem;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        cursor: pointer;
+        transition: box-shadow 0.3s, transform 0.2s;
+      }
+      .game-card-3d:hover {
+        box-shadow: 0 16px 48px 0 #fbbf24cc;
+        transform: translateY(-6px) scale(1.04);
+      }
+      .game-card-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 1.2rem 1.2rem 0 0;
+        background: #181828;
+      }
+      .game-card-info {
+        padding: 1rem 0.7rem 0.7rem 0.7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .game-card-provider {
+        font-size: 0.85rem;
+        color: #fbbf24;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+      }
+      .game-card-title {
+        font-size: 1.05rem;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+        line-height: 1.2;
+      }
+      .game-card-link {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+      }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" data-aos="fade-right" data-aos-duration="1000">
+                    <span class="logo-icon">🎰</span>
+                    <span class="logo-text">CasinoReviews</span>
+                </div>
+                <div class="language-switcher" data-aos="fade-left" data-aos-duration="1000">
+                    <a href="index.html" class="lang-btn card-3d"><span>🏠 Home</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="games-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Petra.bet Live Casino Games</h2>
+            <div class="games-grid" id="games-grid"></div>
+        </div>
+    </section>
+    <footer class="footer" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-disclaimer">
+                    <p id="disclaimer">Gambling can be addictive. Please play responsibly.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" id="terms-link" class="footer-link">Terms of Service</a>
+                    <a href="#" id="privacy-link" class="footer-link">Privacy Policy</a>
+                    <a href="#" id="contact-link" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="games.js"></script>
+    <script>AOS.init({ duration: 1000, easing: 'ease-out-cubic', once: true, offset: 100 });</script>
+</body>
+</html> 

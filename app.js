@@ -64,7 +64,7 @@ class LuxuryCasinoApp {
                     headline: "Top Casino Reviews",
                     subheadline: "Petra.bet offers 20% higher bonuses than competitors",
                     cta1: "Play on Petra.bet",
-                    cta2: "Compare with Others"
+                    cta2: "Games"
                 },
                 ranking: [
                     {
@@ -82,7 +82,7 @@ class LuxuryCasinoApp {
                     headline: "أفضل مراجعات الكازينو",
                     subheadline: "بيترا.بت تقدم مكافآت أعلى بنسبة 20% من المنافسين",
                     cta1: "العب على بيترا.بت",
-                    cta2: "قارن مع الآخرين"
+                    cta2: "Games"
                 },
                 ranking: [
                     {
