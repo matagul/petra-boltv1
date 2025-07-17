@@ -313,28 +313,5 @@
             <p>For the best experience, please enable JavaScript in your browser.</p>
         </div>
     </noscript>
-    
-    <script>
-      function setActiveLang(lang) {
-        localStorage.setItem('petra-info-lang', lang);
-        document.documentElement.lang = lang;
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
-      }
-      document.getElementById('lang-en').addEventListener('click', function() {
-        setActiveLang('en');
-        location.reload();
-      });
-      document.getElementById('lang-ar').addEventListener('click', function() {
-        setActiveLang('ar');
-        location.reload();
-      });
-      // On load, set active button and direction
-      (function() {
-        var lang = localStorage.getItem('petra-info-lang') || 'en';
-        setActiveLang(lang);
-      })();
-    </script>
 </body>
 </html>
