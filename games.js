@@ -266,7 +266,99 @@ const games = [
   }
 ];
 
+// Add bilingual content for expert review, user reviews, and section title
+const gamesContent = {
+  en: {
+    sectionTitle: 'Petra.bet Live Casino Games',
+    expertReview: {
+      title: 'Expert Review',
+      text: 'Petra.bet is the #1 choice for live casino fans in Jordan for 2025, offering the highest bonuses, fastest withdrawals, and an unmatched luxury gaming experience. Competitors like Betway and Rabona are good alternatives, but Petra.bet\'s exclusive games, bonuses, and VIP program make it the ideal destination for serious players. If you want the best winning chances, top security, and excellent customer service, Petra.bet is your best pick.'
+    },
+    userReviews: [
+      { name: 'Mohammad Alali', rating: 5, text: 'Best casino site I\'ve tried! Fast withdrawals and great support.' },
+      { name: 'Laila Hamdan', rating: 5, text: 'Petra.bet bonuses are unbeatable and I love their exclusive games!' },
+      { name: 'Sami Dajani', rating: 4, text: 'Great gaming experience and quick payouts. Highly recommended!' },
+      { name: 'Sara Almasri', rating: 5, text: 'Excellent mobile app and support is always available.' },
+      { name: 'Ahmad Alzoubi', rating: 5, text: 'Petra.bet is my favorite for live games. Awesome VIP program!' }
+    ]
+  },
+  ar: {
+    sectionTitle: 'ألعاب الكازينو المباشر من بيترا.بت',
+    expertReview: {
+      title: 'تقييم خبير',
+      text: 'بيترا.بت هو الخيار الأول لعشاق ألعاب الكازينو المباشر في الأردن لعام 2025، حيث يقدم أعلى المكافآت وأسرع عمليات السحب وتجربة لعب فاخرة لا مثيل لها. المنافسون مثل Betway وRabona يقدمون بدائل جيدة، لكن الألعاب الحصرية والمكافآت وبرنامج VIP في بيترا.بت تجعله الوجهة المثالية للاعبين الجادين. إذا كنت تبحث عن أفضل فرص الربح وأمان عالي وخدمة عملاء ممتازة، بيترا.بت هو خيارك الأمثل.'
+    },
+    userReviews: [
+      { name: 'محمد العلي', rating: 5, text: 'أفضل موقع كازينو جربته! السحب سريع والدعم ممتاز.' },
+      { name: 'ليلى حمدان', rating: 5, text: 'مكافآت بيترا.بت لا تقارن وأحب الألعاب الحصرية لديهم!' },
+      { name: 'سامي الدجاني', rating: 4, text: 'تجربة ألعاب رائعة وسحوبات سريعة. أنصح الجميع!' },
+      { name: 'سارة المصري', rating: 5, text: 'تطبيق الهاتف ممتاز والدعم متوفر دائماً.' },
+      { name: 'أحمد الزعبي', rating: 5, text: 'بيترا.بت هو موقعي المفضل للألعاب الحية. برنامج VIP رائع!' }
+    ]
+  }
+};
+
+const affiliateContent = {
+  en: {
+    sectionTitle: 'Earn with Petra.bet Affiliate Program',
+    description: 'Refer and earn big! Join the Petra.bet Affiliate Program and get lifetime commission for every player you refer. Weekly payouts, custom commission plans, and 24/7 support in your language.',
+    steps: [
+      { icon: '📝', title: 'Register', desc: 'Create your account and get your unique referral link.' },
+      { icon: '🔗', title: 'Share', desc: 'Share your referral link with friends and followers.' },
+      { icon: '💸', title: 'Earn', desc: 'Earn commission for every bet placed by your referrals.' }
+    ],
+    advantages: [
+      'Weekly payout – get paid every week, instantly',
+      'Lifetime commission – keep earning as long as your referrals play',
+      'Custom commission plans – tailored to your business',
+      'Local currencies supported',
+      '24/7 multi-language support'
+    ],
+    cta: 'Sign Up as an Affiliate',
+    ctaLink: 'https://petra.bet/affiliate'
+  },
+  ar: {
+    sectionTitle: 'اربح مع برنامج الشركاء في بيترا.بت',
+    description: 'اربح عمولة مدى الحياة عن كل لاعب تقوم بدعوته! انضم إلى برنامج الشركاء في بيترا.بت واحصل على دفعات أسبوعية، وخطط عمولة مخصصة، ودعم متواصل بلغتك.',
+    steps: [
+      { icon: '📝', title: 'سجل', desc: 'أنشئ حسابك واحصل على رابط الإحالة الخاص بك.' },
+      { icon: '🔗', title: 'شارك', desc: 'شارك رابط الإحالة مع أصدقائك ومتابعيك.' },
+      { icon: '💸', title: 'اربح', desc: 'احصل على عمولة عن كل رهان يضعه من تدعوهم.' }
+    ],
+    advantages: [
+      'دفعات أسبوعية – استلم أرباحك كل أسبوع فوراً',
+      'عمولة مدى الحياة – اربح طالما يلعب من دعوتهم',
+      'خطط عمولة مخصصة – تناسب احتياجاتك',
+      'دعم العملات المحلية',
+      'دعم متواصل 24/7 بلغات متعددة'
+    ],
+    cta: 'سجل كشريك الآن',
+    ctaLink: 'https://petra.bet/affiliate'
+  }
+};
+
+function maskName(name, lang) {
+  if (lang === 'ar') {
+    // Arabic: split by space, show first name and first letter of last name + dot
+    const parts = name.trim().split(' ');
+    if (parts.length > 1) {
+      return `${parts[0]} ${parts[1][0]}.`;
+    } else {
+      return name;
+    }
+  } else {
+    // English: split by space, show first name and first letter of last name + dot
+    const parts = name.trim().split(' ');
+    if (parts.length > 1) {
+      return `${parts[0]} ${parts[1][0]}.`;
+    } else {
+      return name;
+    }
+  }
+}
+
 function renderGames() {
+  const lang = localStorage.getItem('luxury-casino-lang') || 'en';
   const grid = document.getElementById('games-grid');
   grid.innerHTML = '';
   games.forEach(game => {
@@ -296,6 +388,82 @@ function renderGames() {
     });
     grid.appendChild(card);
   });
+
+  // Section title
+  const sectionTitle = document.querySelector('.section-title');
+  if (sectionTitle) sectionTitle.textContent = gamesContent[lang].sectionTitle;
+
+  // Expert review
+  const expertReviewDiv = document.querySelector('.expert-review');
+  if (expertReviewDiv) {
+    expertReviewDiv.innerHTML = `
+      <h3 style="color:#fbbf24; font-size:1.25rem; font-weight:800; margin-bottom:0.7rem;">${gamesContent[lang].expertReview.title}</h3>
+      <p style="color:#fffbe7; font-size:1.13rem; line-height:1.8; margin:0; font-weight:700; letter-spacing:0.5px; text-shadow:0 2px 10px #fbbf24cc;">${gamesContent[lang].expertReview.text}</p>
+    `;
+  }
+
+  // User reviews
+  const userReviewsDiv = document.querySelector('.user-reviews');
+  if (userReviewsDiv) {
+    userReviewsDiv.innerHTML = `
+      <h4 style="color:#fbbf24; font-size:1.18rem; font-weight:900; margin-bottom:1.1rem; letter-spacing:1px; text-shadow:0 2px 10px #fbbf24cc;">${lang === 'ar' ? 'آراء اللاعبين' : 'User Reviews'}</h4>
+      <div style="display:flex;gap:2.2rem;flex-wrap:wrap;justify-content:center;">
+        ${gamesContent[lang].userReviews.map(r => `
+          <div class="user-review-card" style="background:linear-gradient(120deg,#232946 60%,#fbbf24 120%);border-radius:18px;padding:2.1rem 1.7rem;min-width:260px;max-width:340px;box-shadow:0 4px 24px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2.5px solid #fbbf24; margin-bottom:1.5rem;">
+            <span style="font-weight:900;color:#fffbe7;font-size:1.18rem;letter-spacing:0.5px;">${maskName(r.name, lang)}</span>
+            <span style="color:#fbbf24;font-size:1.25rem;font-weight:900;">${'★'.repeat(r.rating)}${r.rating < 5 ? '☆' : ''}</span>
+            <span style="font-size:1.09rem;color:#fffbe7;margin-top:0.7rem;text-align:center;font-weight:700;letter-spacing:0.2px;">${r.text}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
 }
 
-document.addEventListener('DOMContentLoaded', renderGames); 
+document.addEventListener('DOMContentLoaded', renderGames);
+
+// Listen for language switch and re-render
+window.addEventListener('storage', function(e) {
+  if (e.key === 'luxury-casino-lang') {
+    renderGames();
+  }
+});
+
+// Also re-render on language button click (for same-tab switch)
+document.getElementById('lang-en')?.addEventListener('click', () => setTimeout(renderGames, 100));
+document.getElementById('lang-ar')?.addEventListener('click', () => setTimeout(renderGames, 100));
+
+// Luxury popup for competitor casino buttons
+function showLuxuryPopup() {
+  const lang = localStorage.getItem('luxury-casino-lang') || 'en';
+  const popup = document.getElementById('luxury-popup');
+  const overlay = document.getElementById('luxury-popup-overlay');
+  const msg = popup.querySelector('.luxury-popup-message');
+  const btn = popup.querySelector('.luxury-popup-btn');
+  if (lang === 'ar') {
+    msg.textContent = 'ما زلنا نجمع المعلومات حول هذا الكازينو. يرجى العودة لاحقاً! في هذه الأثناء، بيترا.بت هو خيارك الأفضل دائماً لتجربة ألعاب فاخرة.';
+    btn.textContent = 'استمر مع بيترا.بت';
+  } else {
+    msg.textContent = 'We are still gathering information about this casino. Please check back soon! Meanwhile, Petra.bet is always your best choice for luxury gaming.';
+    btn.textContent = 'Continue with Petra.bet';
+  }
+  overlay.classList.add('active');
+  popup.classList.add('active');
+}
+function hideLuxuryPopup() {
+  document.getElementById('luxury-popup-overlay').classList.remove('active');
+  document.getElementById('luxury-popup').classList.remove('active');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // Attach popup to competitor casino buttons
+  document.querySelectorAll('.casino-logo-chip').forEach(chip => {
+    if (!chip.classList.contains('petra')) {
+      chip.addEventListener('click', function(e) {
+        e.preventDefault();
+        showLuxuryPopup();
+      });
+    }
+  });
+  document.getElementById('luxury-popup-overlay').addEventListener('click', hideLuxuryPopup);
+  document.querySelector('.luxury-popup-btn').addEventListener('click', hideLuxuryPopup);
+}); 

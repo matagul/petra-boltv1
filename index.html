@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Casino Reviews - Petra.bet #1 Rated Casino</title>
+    <title>Top Casino Reviews - Jordan's #1 Rated Casino in Jordan</title>
     <meta name="description" content="Compare top online casinos. Petra.bet leads with the best bonuses, games, and user experience. Read our expert reviews now.">
-    
+    <link rel="stylesheet" href="style.css">
+
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Top Casino Reviews - Petra.bet #1 Rated Casino">
+    <meta property="og:title" content="Top Casino Reviews - Petra.bet #1 Rated Casino in Jordan">
     <meta property="og:description" content="Compare top online casinos. Petra.bet leads with the best bonuses, games, and user experience.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://petra.bet">
-    <meta property="og:image" content="https://cdn.petra.bet/white_logo_539a9e6611.png">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
@@ -98,35 +97,9 @@
             color: var(--primary-dark);
             box-shadow: 0 2px 12px rgba(251,191,36,0.13);
         }
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(51,65,85,0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 0.2rem;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-        }
-        .lang-btn {
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            border: none;
-            background: transparent;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--luxury-white);
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-        }
-        .lang-btn.active, .lang-btn:focus {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            outline: none;
-        }
+      
     </style>
     
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Luxury Loading Screen -->
@@ -146,21 +119,21 @@
     
     <!-- Main content (initially hidden) -->
     <header class="header" id="header">
-      <div class="header-content">
-        <div class="logo" data-aos="fade-right" data-aos-duration="1000">
-          <span class="logo-icon">🎰</span>
-          <span class="logo-text">Petra.bet</span>
+        <div class="header-content">
+            <div class="logo aos-init aos-animate" data-aos="fade-right" data-aos-duration="1000">
+                <span class="logo-icon">🎰</span>
+                <span class="logo-text"></span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="information.html" class="nav-link">Promotions</a>
+            </nav>
+            <div class="language-switcher aos-init aos-animate" data-aos="fade-left" data-aos-duration="1000">
+                <button id="lang-en" class="lang-btn card-3d">EN</button>
+                <button id="lang-ar" class="lang-btn card-3d">AR</button>
+            </div>
         </div>
-        <nav class="main-nav">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="information.html" class="nav-link">Promotions</a>
-          <a href="games.html" class="nav-link">Games</a>
-        </nav>
-        <div class="language-switcher" data-aos="fade-left" data-aos-duration="1000">
-          <button id="lang-en" class="lang-btn card-3d">EN</button>
-          <button id="lang-ar" class="lang-btn card-3d">AR</button>
-        </div>
-      </div>
     </header>
     <div id="main-content" style="display: none;">
         <!-- Hero Section with Advanced Parallax -->
@@ -290,7 +263,6 @@
         </footer>
     </div>
     
-    <!-- Petra.bet GA/Tracking snippet here -->
     
     <!-- GSAP Library for Advanced Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -313,5 +285,32 @@
             <p>For the best experience, please enable JavaScript in your browser.</p>
         </div>
     </noscript>
+    <script>
+      function setActiveLang(lang) {
+        localStorage.setItem('luxury-casino-lang', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.getElementById('lang-en').classList.remove('active');
+        document.getElementById('lang-ar').classList.remove('active');
+        if (lang === 'en') {
+          document.getElementById('lang-en').classList.add('active');
+        } else {
+          document.getElementById('lang-ar').classList.add('active');
+        }
+      }
+      document.getElementById('lang-en').addEventListener('click', function() {
+        setActiveLang('en');
+        location.reload();
+      });
+      document.getElementById('lang-ar').addEventListener('click', function() {
+        setActiveLang('ar');
+        location.reload();
+      });
+      // On load, set active button and direction
+      (function() {
+        var lang = localStorage.getItem('luxury-casino-lang') || 'en';
+        setActiveLang(lang);
+      })();
+    </script>
 </body>
 </html>

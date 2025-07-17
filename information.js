@@ -9,11 +9,11 @@ const langEnBtn = document.getElementById('lang-en');
 const langArBtn = document.getElementById('lang-ar');
 const promosTitle = document.getElementById('promos-title');
 
-let currentLang = localStorage.getItem('petra-info-lang') || 'en';
+let currentLang = localStorage.getItem('luxury-casino-lang') || 'en';
 
 function setActiveLang(lang) {
   currentLang = lang;
-  localStorage.setItem('petra-info-lang', lang);
+  localStorage.setItem('luxury-casino-lang', lang);
   langEnBtn.classList.toggle('active', lang === 'en');
   langArBtn.classList.toggle('active', lang === 'ar');
   document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -84,15 +84,117 @@ async function fetchPromos(lang) {
   }
 }
 
+const betwayPromos = {
+  en: [
+    {
+      title: '100% Welcome Bonus up to $1000',
+      description: 'Join Betway Arabia and double your first deposit up to $1000. Enjoy a huge selection of slots, live casino, and sports betting.',
+      img: 'https://betwayarabia.com/promo1.jpg'
+    },
+    {
+      title: 'Weekly Free Bets',
+      description: 'Get free bets every week on your favorite sports and casino games. Loyalty pays at Betway!',
+      img: 'https://betwayarabia.com/promo2.jpg'
+    }
+  ],
+  ar: [
+    {
+      title: 'مكافأة ترحيب 100% حتى 1000$',
+      description: 'انضم إلى بيتواي أرابيا وضعف أول إيداع لك حتى 1000$. استمتع بمجموعة ضخمة من الألعاب والرياضات.',
+      img: 'https://betwayarabia.com/promo1.jpg'
+    },
+    {
+      title: 'رهانات مجانية أسبوعية',
+      description: 'احصل على رهانات مجانية كل أسبوع على ألعابك المفضلة. الولاء يكافأ في بيتواي!',
+      img: 'https://betwayarabia.com/promo2.jpg'
+    }
+  ]
+};
+const rabonaPromos = {
+  en: [
+    {
+      title: '100% Sports & Casino Bonus up to €500',
+      description: 'Start your Rabona journey with a 100% bonus up to €500. Play slots, live casino, and bet on sports with extra funds.',
+      img: 'https://rabona-8545.com/en/assets/promo1.jpg'
+    },
+    {
+      title: 'Weekly Slot Tournaments',
+      description: 'Compete in weekly slot tournaments for a chance to win cash prizes and free spins. Only at Rabona!',
+      img: 'https://rabona-8545.com/en/assets/promo2.jpg'
+    }
+  ],
+  ar: [
+    {
+      title: 'مكافأة ترحيب 100% حتى 500 يورو',
+      description: 'ابدأ رحلتك مع رابونا بمكافأة 100% حتى 500 يورو. العب السلوتس والكازينو المباشر وراهن على الرياضة بأموال إضافية.',
+      img: 'https://rabona-8545.com/en/assets/promo1.jpg'
+    },
+    {
+      title: 'بطولات سلوت أسبوعية',
+      description: 'تنافس في بطولات السلوت الأسبوعية واربح جوائز نقدية ودورات مجانية. فقط في رابونا!',
+      img: 'https://rabona-8545.com/en/assets/promo2.jpg'
+    }
+  ]
+};
+
+function renderOtherPromos(promos, grid, lang) {
+  grid.innerHTML = '';
+  promos.forEach(promo => {
+    const card = document.createElement('div');
+    card.className = 'promo-card';
+    const title = document.createElement('div');
+    title.className = 'promo-title';
+    title.textContent = promo.title;
+    card.appendChild(title);
+    if (promo.description) {
+      const desc = document.createElement('div');
+      desc.className = 'promo-desc';
+      desc.textContent = promo.description;
+      card.appendChild(desc);
+    }
+    grid.appendChild(card);
+  });
+}
+
+function setAffiliateAccordionText(lang, open) {
+  const btn = document.getElementById('affiliate-toggle-btn');
+  if (!btn) return;
+  if (lang === 'ar') {
+    btn.textContent = open ? 'إخفاء برنامج الشركاء في بيترا.بت' : 'عرض برنامج الشركاء في بيترا.بت';
+  } else {
+    btn.textContent = open ? 'Hide Petra.bet Affiliate Program' : 'Show Petra.bet Affiliate Program';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('affiliate-toggle-btn');
+  const section = document.getElementById('affiliate-section');
+  let open = false;
+  if (btn && section) {
+    setAffiliateAccordionText(currentLang, open);
+    btn.addEventListener('click', function() {
+      open = !open;
+      section.style.display = open ? '' : 'none';
+      setAffiliateAccordionText(currentLang, open);
+    });
+  }
+});
+
+function renderAllPromos(lang) {
+  setActiveLang(lang);
+  fetchPromos(lang);
+  renderOtherPromos(betwayPromos[lang], document.getElementById('betway-promos-grid'), lang);
+  renderOtherPromos(rabonaPromos[lang], document.getElementById('rabona-promos-grid'), lang);
+  // Update affiliate accordion text on language switch
+  setAffiliateAccordionText(lang, document.getElementById('affiliate-section')?.style.display !== 'none');
+}
+
 langEnBtn.addEventListener('click', () => {
-  setActiveLang('en');
-  fetchPromos('en');
+  renderAllPromos('en');
 });
 langArBtn.addEventListener('click', () => {
-  setActiveLang('ar');
-  fetchPromos('ar');
+  renderAllPromos('ar');
 });
 
 // Initial load
-setActiveLang(currentLang);
-fetchPromos(currentLang); 
+renderAllPromos(currentLang); 

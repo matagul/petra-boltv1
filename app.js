@@ -588,20 +588,17 @@ class LuxuryCasinoApp {
     renderReviews(reviews) {
         const content = this.data[this.currentLanguage];
         document.getElementById('reviews-title').textContent = content.sectionTitles?.reviews || 'Detailed Reviews';
-        
         const grid = document.getElementById('reviews-grid');
         grid.innerHTML = '';
-        
         reviews.forEach((review, index) => {
             const card = document.createElement('div');
             card.className = `review-card card-3d ${review.isPetra ? 'petra' : ''}`;
-            
             const prosHTML = review.pros.map(pro => `<li>${pro}</li>`).join('');
             const consHTML = review.cons.map(con => `<li>${con}</li>`).join('');
-            const paymentHTML = review.payments.map(method => 
-                `<span class="payment-method">${method}</span>`
-            ).join('');
-            
+            const paymentHTML = review.payments.map(method => `<span class="payment-method">${method}</span>`).join('');
+            // Always show preview and button
+            const previewLength = 180;
+            const preview = review.description.length > previewLength ? review.description.slice(0, previewLength) + '...' : review.description;
             card.innerHTML = `
                 <div class="review-header">
                     <div class="review-logo">${review.icon}</div>
@@ -610,8 +607,11 @@ class LuxuryCasinoApp {
                         <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
                     </div>
                 </div>
-                <p class="review-description">${review.description}</p>
-                <div class="review-details">
+                <p class="review-description" id="review-desc-${index}">${preview}</p>
+                <div style="display: flex; justify-content: center; margin: 0.7rem 0 0.2rem 0;">
+                  <button class="read-more-btn" id="read-more-btn-${index}" type="button">${this.currentLanguage === 'ar' ? 'اقرأ المزيد' : 'Read More'}</button>
+                </div>
+                <div class="review-details" id="review-details-${index}" style="display:none;">
                     <div class="review-section">
                         <h4>${content.reviewLabels?.pros || 'Pros'}</h4>
                         <ul class="review-list pros">${prosHTML}</ul>
@@ -629,12 +629,27 @@ class LuxuryCasinoApp {
                     </div>
                 </div>
             `;
-            
             grid.appendChild(card);
-            
             // Add AOS attributes for scroll animation
             card.setAttribute('data-aos', 'fade-up');
             card.setAttribute('data-aos-delay', (index * 100).toString());
+            // Read More logic
+            const btn = card.querySelector(`#read-more-btn-${index}`);
+            const desc = card.querySelector(`#review-desc-${index}`);
+            const details = card.querySelector(`#review-details-${index}`);
+            let expanded = false;
+            btn.addEventListener('click', () => {
+                expanded = !expanded;
+                if (expanded) {
+                    desc.textContent = review.description;
+                    details.style.display = '';
+                    btn.textContent = this.currentLanguage === 'ar' ? 'إغلاق' : 'Read Less';
+                } else {
+                    desc.textContent = preview;
+                    details.style.display = 'none';
+                    btn.textContent = this.currentLanguage === 'ar' ? 'اقرأ المزيد' : 'Read More';
+                }
+            });
         });
     }
     

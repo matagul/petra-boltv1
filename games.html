@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petra.bet Casino Games</title>
+    <title>Jordan Casino Games</title>
     <meta name="description" content="Browse and play the best live casino games at Petra.bet. Lightning Dice, Sweet Bonanza, Crazy Time, and more.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎰</text></svg>">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -12,20 +12,18 @@
       .games-section {
         padding: 4rem 0;
         background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+        padding-top: 5.5rem;
       }
       .games-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 2rem;
+        gap: .1em;
         justify-items: center;
         align-items: stretch;
-        margin-top: 2.5rem;
       }
-      .game-card-3d {
-        width: 167px;
-        height: 260px;
+      .game-card-3d {  
         background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
-        border-radius: 1.2rem;
+        border-radius: 0;
         box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
         position: relative;
         overflow: hidden;
@@ -43,7 +41,7 @@
         width: 100%;
         height: 180px;
         object-fit: cover;
-        border-radius: 1.2rem 1.2rem 0 0;
+        border-radius: 0;
         background: #181828;
       }
       .game-card-info {
@@ -95,53 +93,89 @@
         color: var(--primary-dark);
         box-shadow: 0 2px 12px rgba(251,191,36,0.13);
       }
-      .language-switcher {
-        display: flex;
-        gap: 0.5rem;
-        background: rgba(51,65,85,0.3);
-        backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 0.2rem;
-        border: 1px solid rgba(251, 191, 36, 0.2);
-      }
-      .lang-btn {
-        padding: 0.5rem 1.2rem;
-        border-radius: 8px;
-        border: none;
-        background: transparent;
-        font-weight: 600;
-        font-size: 1rem;
-        color: var(--luxury-white);
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s;
-      }
-      .lang-btn.active, .lang-btn:focus {
-        background: var(--accent-gold);
-        color: var(--primary-dark);
-        outline: none;
-      }
+      
     </style>
 </head>
 <body>
+    <!-- Removed .parallax-bg and #particles-container for scroll debug -->
     <header class="header" id="header">
-        <div class="header-content">
-            <div class="logo" data-aos="fade-right" data-aos-duration="1000">
-                <span class="logo-icon">🎰</span>
-                <span class="logo-text">Petra.bet</span>
-            </div>
-            <nav class="main-nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="information.html" class="nav-link">Promotions</a>
-                <a href="games.html" class="nav-link active">Games</a>
-            </nav>
-            <div class="language-switcher" data-aos="fade-left" data-aos-duration="1000">
-                <button id="lang-en" class="lang-btn card-3d">EN</button>
-                <button id="lang-ar" class="lang-btn card-3d">AR</button>
-            </div>
+      <div class="header-content">
+        <div class="logo aos-init aos-animate" data-aos="fade-right" data-aos-duration="1000">
+          <span class="logo-icon">🎰</span>
+          <span class="logo-text"></span>
         </div>
+        <nav class="main-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="games.html" class="nav-link active">Games</a>
+          <a href="information.html" class="nav-link">Promotions</a>
+        </nav>
+        <div class="language-switcher aos-init aos-animate" data-aos="fade-left" data-aos-duration="1000">
+          <button id="lang-en" class="lang-btn card-3d">EN</button>
+          <button id="lang-ar" class="lang-btn card-3d">AR</button>
+        </div>
+      </div>
     </header>
     <section class="games-section">
         <div class="container">
+            <!-- Comparison/Filter Bar -->
+            <div class="games-compare-bar luxury-gradient-bar">
+              <span style="font-weight:900; color:var(--accent-gold); font-size:1.18rem; letter-spacing:2px; text-shadow:0 2px 12px #fbbf24cc;">COMPARE CASINOS</span>
+              <div class="casino-logo-chip petra" title="PETRA.BET BEST PICK" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:linear-gradient(90deg,#fbbf24 60%,#f59e0b 100%);color:#0f172a;font-weight:900;box-shadow:0 2px 12px #fbbf2433; border:2.5px solid #fffbe7; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">
+                PETRA.BET <span class="best-pick-badge" style="background:#fffbe7;color:#f59e0b;font-size:0.92rem;padding:0.13rem 0.8rem;border-radius:7px;margin-left:0.9rem;font-weight:900;box-shadow:0 0 10px #fbbf2433;letter-spacing:1px;">BEST PICK</span>
+              </div>
+              <div class="casino-logo-chip" data-casino="betway" title="BETWAY ARABIA" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">BETWAY</div>
+              <div class="casino-logo-chip" data-casino="rabona" title="RABONA" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">RABONA</div>
+              <div class="casino-logo-chip" data-casino="casinia" title="CASINIA" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">CASINIA</div>
+              <div class="casino-logo-chip" data-casino="wazamba" title="WAZAMBA" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">WAZAMBA</div>
+              <div class="casino-logo-chip" data-casino="tikitaka" title="TIKITAKA" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">TIKITAKA</div>
+              <div class="casino-logo-chip" data-casino="betfinal" title="BETFINAL" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">BETFINAL</div>
+              <div class="casino-logo-chip" data-casino="10yyyonline" title="10YYYONLINE" style="display:flex;align-items:center;gap:0.7rem;padding:0.6rem 1.6rem;border-radius:12px;background:#232946;color:#fbbf24;font-weight:900; border:2px solid #fbbf24; font-size:1.08rem; letter-spacing:1.5px; text-transform:uppercase; transition:box-shadow 0.2s,background 0.2s; cursor:pointer;">10YYYONLINE</div>
+            </div>
+            <!-- Luxury Popup Modal -->
+            <div id="luxury-popup-overlay"></div>
+            <div id="luxury-popup">
+              <div class="luxury-popup-content">
+                <div class="luxury-popup-icon">💎</div>
+                <span class="luxury-popup-message"></span>
+                <button class="luxury-popup-btn">Continue</button>
+              </div>
+            </div>
+            <!-- Expert Review -->
+            <div class="expert-review" style="margin:2.2rem 0 1.5rem 0; background:rgba(251,191,36,0.08); border-left:5px solid #fbbf24; border-radius:10px; padding:1.2rem 1.5rem; box-shadow:0 2px 12px #fbbf2433;">
+              <h3 style="color:#fbbf24; font-size:1.25rem; font-weight:800; margin-bottom:0.7rem;">تقييم خبير</h3>
+              <p style="color:#fffbe7; font-size:1.13rem; line-height:1.8; margin:0; font-weight:700; letter-spacing:0.5px; text-shadow:0 2px 10px #fbbf24cc;">بيترا.بت هو الخيار الأول لعشاق ألعاب الكازينو المباشر في الأردن لعام 2025، حيث يقدم أعلى المكافآت وأسرع عمليات السحب وتجربة لعب فاخرة لا مثيل لها. المنافسون مثل Betway وRabona يقدمون بدائل جيدة، لكن الألعاب الحصرية والمكافآت وبرنامج VIP في بيترا.بت تجعله الوجهة المثالية للاعبين الجادين. إذا كنت تبحث عن أفضل فرص الربح وأمان عالي وخدمة عملاء ممتازة، بيترا.بت هو خيارك الأمثل.</p>
+            </div>
+            <!-- User Reviews -->
+            <div class="user-reviews" style="margin-bottom:2.5rem;">
+              <h4 style="color:#fbbf24; font-size:1.18rem; font-weight:900; margin-bottom:1.1rem; letter-spacing:1px; text-shadow:0 2px 10px #fbbf24cc;">آراء اللاعبين</h4>
+              <div style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:space-between;">
+                <div class="user-review-card" style="background:linear-gradient(90deg,#232946 60%,#fbbf24 100%);border-radius:12px;padding:1.2rem 1.3rem;min-width:200px;max-width:260px;box-shadow:0 2px 12px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2px solid #fbbf24;">
+                  <span style="font-weight:900;color:#fffbe7;font-size:1.08rem;letter-spacing:0.5px;">محمد العلي</span>
+                  <span style="color:#fbbf24;font-size:1.15rem;font-weight:900;">★★★★★</span>
+                  <span style="font-size:1.01rem;color:#fffbe7;margin-top:0.5rem;text-align:center;font-weight:700;letter-spacing:0.2px;">أفضل موقع كازينو جربته! السحب سريع والدعم ممتاز.</span>
+                </div>
+                <div class="user-review-card" style="background:linear-gradient(90deg,#232946 60%,#fbbf24 100%);border-radius:12px;padding:1.2rem 1.3rem;min-width:200px;max-width:260px;box-shadow:0 2px 12px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2px solid #fbbf24;">
+                  <span style="font-weight:900;color:#fffbe7;font-size:1.08rem;letter-spacing:0.5px;">ليلى حمدان</span>
+                  <span style="color:#fbbf24;font-size:1.15rem;font-weight:900;">★★★★★</span>
+                  <span style="font-size:1.01rem;color:#fffbe7;margin-top:0.5rem;text-align:center;font-weight:700;letter-spacing:0.2px;">مكافآت بيترا.بت لا تقارن وأحب الألعاب الحصرية لديهم!</span>
+                </div>
+                <div class="user-review-card" style="background:linear-gradient(90deg,#232946 60%,#fbbf24 100%);border-radius:12px;padding:1.2rem 1.3rem;min-width:200px;max-width:260px;box-shadow:0 2px 12px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2px solid #fbbf24;">
+                  <span style="font-weight:900;color:#fffbe7;font-size:1.08rem;letter-spacing:0.5px;">سامي الدجاني</span>
+                  <span style="color:#fbbf24;font-size:1.15rem;font-weight:900;">★★★★☆</span>
+                  <span style="font-size:1.01rem;color:#fffbe7;margin-top:0.5rem;text-align:center;font-weight:700;letter-spacing:0.2px;">تجربة ألعاب رائعة وسحوبات سريعة. أنصح الجميع!</span>
+                </div>
+                <div class="user-review-card" style="background:linear-gradient(90deg,#232946 60%,#fbbf24 100%);border-radius:12px;padding:1.2rem 1.3rem;min-width:200px;max-width:260px;box-shadow:0 2px 12px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2px solid #fbbf24;">
+                  <span style="font-weight:900;color:#fffbe7;font-size:1.08rem;letter-spacing:0.5px;">سارة المصري</span>
+                  <span style="color:#fbbf24;font-size:1.15rem;font-weight:900;">★★★★★</span>
+                  <span style="font-size:1.01rem;color:#fffbe7;margin-top:0.5rem;text-align:center;font-weight:700;letter-spacing:0.2px;">تطبيق الهاتف ممتاز والدعم متوفر دائماً.</span>
+                </div>
+                <div class="user-review-card" style="background:linear-gradient(90deg,#232946 60%,#fbbf24 100%);border-radius:12px;padding:1.2rem 1.3rem;min-width:200px;max-width:260px;box-shadow:0 2px 12px #fbbf2433;display:flex;flex-direction:column;align-items:center;border:2px solid #fbbf24;">
+                  <span style="font-weight:900;color:#fffbe7;font-size:1.08rem;letter-spacing:0.5px;">أحمد الزعبي</span>
+                  <span style="color:#fbbf24;font-size:1.15rem;font-weight:900;">★★★★★</span>
+                  <span style="font-size:1.01rem;color:#fffbe7;margin-top:0.5rem;text-align:center;font-weight:700;letter-spacing:0.2px;">بيترا.بت هو موقعي المفضل للألعاب الحية. برنامج VIP رائع!</span>
+                </div>
+              </div>
+            </div>
             <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Petra.bet Live Casino Games</h2>
             <div class="games-grid" id="games-grid"></div>
         </div>
@@ -165,11 +199,16 @@
     <script>AOS.init({ duration: 1000, easing: 'ease-out-cubic', once: true, offset: 100 });</script>
     <script>
       function setActiveLang(lang) {
-        localStorage.setItem('petra-info-lang', lang);
+        localStorage.setItem('luxury-casino-lang', lang);
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-        document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+        document.getElementById('lang-en').classList.remove('active');
+        document.getElementById('lang-ar').classList.remove('active');
+        if (lang === 'en') {
+          document.getElementById('lang-en').classList.add('active');
+        } else {
+          document.getElementById('lang-ar').classList.add('active');
+        }
       }
       document.getElementById('lang-en').addEventListener('click', function() {
         setActiveLang('en');
@@ -181,7 +220,7 @@
       });
       // On load, set active button and direction
       (function() {
-        var lang = localStorage.getItem('petra-info-lang') || 'en';
+        var lang = localStorage.getItem('luxury-casino-lang') || 'en';
         setActiveLang(lang);
       })();
       // Patch game links to use full Petra.bet URLs
