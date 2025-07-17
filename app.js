@@ -484,9 +484,8 @@ class LuxuryCasinoApp {
     
     renderContent() {
         const content = this.data[this.currentLanguage];
-        
         this.renderHero(content.hero);
-        this.renderRanking(content.ranking);
+        this.renderCasinoCards(content.ranking);
         this.renderReviews(content.reviews);
         this.renderTips(content.tips);
         this.renderBanking(content.banking);
@@ -521,92 +520,69 @@ class LuxuryCasinoApp {
         cta2.textContent = hero.cta2;
     }
     
-    renderRanking(ranking) {
-        const content = this.data[this.currentLanguage];
-        document.getElementById('ranking-title').textContent = content.sectionTitles?.ranking || 'Casino Rankings';
-        
-        const tbody = document.getElementById('ranking-tbody');
-        tbody.innerHTML = '';
-        
-        const sortedRanking = this.sortRankingData(ranking);
-        
-        sortedRanking.forEach((casino, index) => {
-            const row = document.createElement('tr');
-            if (casino.isPetra) {
-                row.classList.add('petra-row');
-            }
-            
+    renderCasinoCards(ranking) {
+        const container = document.querySelector('.casino-cards-container');
+        container.innerHTML = '';
+        ranking.forEach(casino => {
             const overall = Math.round(
                 (casino.scores.bonus + casino.scores.ux + casino.scores.speed + casino.scores.games) / 4
             );
-            
-            row.innerHTML = `
-                <td class="casino-name">${casino.name}</td>
-                <td class="score ${this.getScoreClass(casino.scores.bonus)}">${casino.scores.bonus}</td>
-                <td class="score ${this.getScoreClass(casino.scores.ux)}">${casino.scores.ux}</td>
-                <td class="score ${this.getScoreClass(casino.scores.speed)}">${casino.scores.speed}</td>
-                <td class="score ${this.getScoreClass(casino.scores.games)}">${casino.scores.games}</td>
-                <td class="score ${this.getScoreClass(overall)}">${overall}</td>
+            const card = document.createElement('div');
+            card.className = 'casino-card-3d' + (casino.isPetra ? ' petra' : '');
+            card.innerHTML = `
+              <div class="casino-card-header">
+                <span class="casino-card-icon">${casino.isPetra ? '🏆' : '🎰'}</span>
+                <span>${casino.name}</span>
+              </div>
+              <div class="casino-card-body">
+                <div class="casino-card-stats">
+                  <div class="casino-card-stat bonus"><span class="label">Bonus</span><span class="value">${casino.scores.bonus}</span></div>
+                  <div class="casino-card-stat"><span class="label">UX</span><span class="value">${casino.scores.ux}</span></div>
+                  <div class="casino-card-stat"><span class="label">Speed</span><span class="value">${casino.scores.speed}</span></div>
+                  <div class="casino-card-stat"><span class="label">Games</span><span class="value">${casino.scores.games}</span></div>
+                </div>
+                <div class="casino-card-overall">${overall}</div>
+              </div>
             `;
-            
-            tbody.appendChild(row);
-            
-            // Animate row appearance
-            gsap.fromTo(row,
-                { opacity: 0, x: -50 },
-                { 
-                    opacity: 1, 
-                    x: 0, 
-                    duration: 0.5, 
-                    delay: index * 0.1,
-                    ease: "power2.out"
-                }
-            );
+            container.appendChild(card);
         });
-    }
-    
-    sortRankingData(ranking) {
-        const sorted = [...ranking].sort((a, b) => {
-            let valueA, valueB;
-            
-            if (this.sortColumn === 'name') {
-                valueA = a.name;
-                valueB = b.name;
-            } else if (this.sortColumn === 'overall') {
-                valueA = (a.scores.bonus + a.scores.ux + a.scores.speed + a.scores.games) / 4;
-                valueB = (b.scores.bonus + b.scores.ux + b.scores.speed + b.scores.games) / 4;
-            } else {
-                valueA = a.scores[this.sortColumn];
-                valueB = b.scores[this.sortColumn];
-            }
-            
-            if (typeof valueA === 'string') {
-                return this.sortDirection === 'asc' ? 
-                    valueA.localeCompare(valueB) : 
-                    valueB.localeCompare(valueA);
-            }
-            
-            return this.sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+        // 3D Gyro Animation
+        container.querySelectorAll('.casino-card-3d').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * 10;
+                const rotateY = ((centerX - x) / centerX) * 10;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+            card.addEventListener('mousedown', () => {
+                card.style.transform += ' scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = card.style.transform.replace(' scale(0.98)', '');
+            });
+            // Touch support
+            card.addEventListener('touchmove', e => {
+                const touch = e.touches[0];
+                const rect = card.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * 10;
+                const rotateY = ((centerX - x) / centerX) * 10;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = '';
+            });
         });
-        
-        return sorted;
-    }
-    
-    sortRanking(column) {
-        if (this.sortColumn === column) {
-            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
-            this.sortColumn = column;
-            this.sortDirection = 'desc';
-        }
-        
-        this.renderRanking(this.data[this.currentLanguage].ranking);
-    }
-    
-    getScoreClass(score) {
-        if (score >= 85) return 'high';
-        if (score >= 70) return 'medium';
-        return 'low';
     }
     
     renderReviews(reviews) {
@@ -733,6 +709,10 @@ class LuxuryCasinoApp {
     }
     
     renderBonuses(bonuses) {
+        // Remove existing bonuses section if present
+        const old = document.querySelector('.bonuses');
+        if (old) old.remove();
+        
         const content = this.data[this.currentLanguage];
         
         // Create bonuses section
@@ -775,6 +755,10 @@ class LuxuryCasinoApp {
     }
     
     renderMobile(mobile) {
+        // Remove existing mobile section if present
+        const old = document.querySelector('.mobile');
+        if (old) old.remove();
+        
         const content = this.data[this.currentLanguage];
         
         // Create mobile section
@@ -817,6 +801,10 @@ class LuxuryCasinoApp {
     }
     
     renderSupport(support) {
+        // Remove existing support section if present
+        const old = document.querySelector('.support');
+        if (old) old.remove();
+        
         const content = this.data[this.currentLanguage];
         
         // Create support section
@@ -859,6 +847,10 @@ class LuxuryCasinoApp {
     }
     
     renderResponsible(responsible) {
+        // Remove existing responsible section if present
+        const old = document.querySelector('.responsible');
+        if (old) old.remove();
+        
         const content = this.data[this.currentLanguage];
         
         // Create responsible section
@@ -902,14 +894,13 @@ class LuxuryCasinoApp {
         // Add responsible gaming notice
         const notice = document.createElement('div');
         notice.className = 'responsible-notice';
+        const rn = content.responsibleNotice;
         notice.innerHTML = `
             <div class="notice-content">
-                <h4>🛡️ Our Commitment to Responsible Gaming</h4>
-                <p>We are committed to providing a safe and responsible gaming environment. If you or someone you know has a gambling problem, please seek help from professional organizations.</p>
+                <h4>${rn.heading}</h4>
+                <p>${rn.description}</p>
                 <div class="help-links">
-                    <a href="https://www.gamblersanonymous.org" target="_blank" rel="noopener">Gamblers Anonymous</a>
-                    <a href="https://www.ncpgambling.org" target="_blank" rel="noopener">National Council on Problem Gambling</a>
-                    <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a>
+                    ${rn.helpLinks.map(link => `<a href="${link.url}" target="_blank" rel="noopener">${link.label}</a>`).join('')}
                 </div>
             </div>
         `;

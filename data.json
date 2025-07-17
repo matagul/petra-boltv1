@@ -1,11 +1,11 @@
 {
   "en": {
     "meta": {
-      "title": "Top Casino Reviews 2024 - Petra.bet #1 Rated Casino",
+      "title": "Top Casino Reviews 2025 - Petra.bet #1 Rated Casino",
       "description": "Compare the best online casinos. Petra.bet leads with superior bonuses, games, and user experience. Read our expert reviews and start winning today."
     },
     "hero": {
-      "headline": "Top Casino Reviews 2024",
+      "headline": "Top Casino Reviews 2025",
       "subheadline": "Petra.bet offers 20% higher bonuses than competitors with lightning-fast payouts",
       "cta1": "Play on Petra.bet",
       "cta2": "Compare with Others"
@@ -364,15 +364,24 @@
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
       "contact": "Contact Us"
+    },
+    "responsibleNotice": {
+      "heading": "🛡️ Our Commitment to Responsible Gaming",
+      "description": "We are committed to providing a safe and responsible gaming environment. If you or someone you know has a gambling problem, please seek help from professional organizations.",
+      "helpLinks": [
+        { "url": "https://www.gamblersanonymous.org", "label": "Gamblers Anonymous" },
+        { "url": "https://www.ncpgambling.org", "label": "National Council on Problem Gambling" },
+        { "url": "https://www.begambleaware.org", "label": "BeGambleAware" }
+      ]
     }
   },
   "ar": {
     "meta": {
-      "title": "أفضل مراجعات الكازينو 2024 - بيترا.بت الكازينو رقم 1",
+      "title": "أفضل مراجعات الكازينو 2025 - بيترا.بت الكازينو رقم 1",
       "description": "قارن أفضل الكازينوهات عبر الإنترنت. بيترا.بت يتصدر بمكافآت فائقة وألعاب وتجربة مستخدم استثنائية. اقرأ مراجعاتنا المتخصصة وابدأ الفوز اليوم."
     },
     "hero": {
-      "headline": "أفضل مراجعات الكازينو 2024",
+      "headline": "أفضل مراجعات الكازينو 2025",
       "subheadline": "بيترا.بت تقدم مكافآت أعلى بنسبة 20% من المنافسين مع دفعات سريعة كالبرق",
       "cta1": "العب على بيترا.بت",
       "cta2": "قارن مع الآخرين"
@@ -731,6 +740,15 @@
       "terms": "شروط الخدمة",
       "privacy": "سياسة الخصوصية",
       "contact": "اتصل بنا"
+    },
+    "responsibleNotice": {
+      "heading": "🛡️ التزامنا باللعب المسؤول",
+      "description": "نحن ملتزمون بتوفير بيئة لعب آمنة ومسؤولة. إذا كنت أنت أو أي شخص تعرفه يعاني من مشكلة قمار، يرجى طلب المساعدة من المنظمات المتخصصة.",
+      "helpLinks": [
+        { "url": "https://www.gamblersanonymous.org", "label": "مجهولو المقامرة" },
+        { "url": "https://www.ncpgambling.org", "label": "المجلس الوطني لمشاكل القمار" },
+        { "url": "https://www.begambleaware.org", "label": "كن واعياً بالمقامرة" }
+      ]
     }
   }
 }

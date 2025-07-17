@@ -514,6 +514,7 @@ body {
     border-radius: 16px;
     background: rgba(51, 65, 85, 0.3);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(251, 191, 36, 0.2);
     box-shadow: var(--shadow-luxury);
     transition: all var(--transition-luxury);
@@ -528,6 +529,14 @@ body {
     width: 100%;
     border-collapse: collapse;
     font-size: var(--font-size-base);
+    table-layout: fixed;
+}
+
+.ranking-table .casino-name {
+    max-width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .ranking-table th,
@@ -536,6 +545,10 @@ body {
     text-align: center;
     border-bottom: 1px solid rgba(251, 191, 36, 0.1);
     transition: all var(--transition-normal);
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ranking-table th {
@@ -571,6 +584,7 @@ body {
     background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
     border: 1px solid rgba(251, 191, 36, 0.3);
     position: relative;
+    z-index: 0;
 }
 
 .ranking-table .petra-row::before {
@@ -582,6 +596,8 @@ body {
     bottom: 0;
     background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
     animation: petraGlow 3s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
 }
 
 @keyframes petraGlow {
@@ -620,6 +636,7 @@ body {
 .review-card {
     background: rgba(51, 65, 85, 0.3);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
     padding: var(--spacing-2xl);
     border: 1px solid rgba(251, 191, 36, 0.2);
@@ -677,6 +694,7 @@ body {
 .tip-card {
     background: rgba(51, 65, 85, 0.3);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
     padding: var(--spacing-xl);
     border: 1px solid rgba(251, 191, 36, 0.2);
@@ -738,6 +756,7 @@ body {
 .banking-card {
     background: rgba(51, 65, 85, 0.3);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
     padding: var(--spacing-xl);
     border: 1px solid rgba(251, 191, 36, 0.2);
@@ -818,6 +837,7 @@ body {
 .bonus-card, .mobile-card, .support-card, .responsible-card {
     background: rgba(51, 65, 85, 0.3);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
     padding: var(--spacing-xl);
     border: 1px solid rgba(251, 191, 36, 0.2);
@@ -1062,4 +1082,144 @@ a:focus,
 
 [dir="rtl"] .footer-content {
     flex-direction: row-reverse;
+}
+
+/* Fix ranking table column order in RTL */
+[dir="rtl"] .ranking-table {
+    direction: ltr !important;
+}
+[dir="rtl"] .ranking-table th,
+[dir="rtl"] .ranking-table td {
+    text-align: right;
+}
+
+/* 3D Casino Card Styles - Encapsulated */
+.casino-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: stretch;
+  margin: 3rem 0;
+}
+
+.casino-card-3d {
+  --card-width: 340px;
+  --card-height: 220px;
+  --card-bg: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+  --card-glow: 0 0 32px 0 #fbbf24;
+  --card-gold: #fbbf24;
+  --card-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+  width: var(--card-width);
+  height: var(--card-height);
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  perspective: 1200px;
+  transition: box-shadow 0.3s;
+  will-change: transform;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+}
+
+.casino-card-3d.petra {
+  border: 2.5px solid var(--card-gold);
+  box-shadow: var(--card-glow), var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.casino-card-3d.petra::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  background: url('https://cdn.petra.bet/white_logo_539a9e6611.png') no-repeat center center / contain;
+  opacity: 0.13;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.casino-card-3d.petra .casino-card-header,
+.casino-card-3d.petra .casino-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.casino-card-3d .casino-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.7rem;
+}
+
+.casino-card-3d .casino-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.casino-card-3d .casino-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.casino-card-3d .casino-card-stat {
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.casino-card-3d .casino-card-stat .label {
+  min-width: 60px;
+  color: #b8b8b8;
+  font-size: 0.98rem;
+}
+
+.casino-card-3d .casino-card-stat .value {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.casino-card-3d .casino-card-stat.bonus .value,
+.casino-card-3d.petra .casino-card-stat .value {
+  color: var(--card-gold);
+}
+
+.casino-card-3d .casino-card-overall {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--card-gold);
+  align-self: flex-end;
+  margin-left: 1.5rem;
+  text-shadow: 0 0 10px #fbbf24cc;
+}
+
+.casino-card-3d .casino-card-icon {
+  font-size: 2.1rem;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .casino-cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }
