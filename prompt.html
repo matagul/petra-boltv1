@@ -123,6 +123,30 @@
         font-size: 1.5rem;
       }
     }
+    .ai-site-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #ffe9a8 60%, #fbbf24 100%);
+      color: #232946;
+      border: none;
+      border-radius: 12px;
+      padding: 1.1rem 2.8rem;
+      font-weight: 900;
+      font-size: 1.18rem;
+      box-shadow: 0 8px 32px 0 #fbbf24cc, 0 0 16px 4px #fbbf24cc;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 0.5rem;
+    }
+    .ai-site-btn:hover {
+      background: linear-gradient(90deg, #fbbf24 0%, #ffe9a8 100%);
+      color: #232946;
+      box-shadow: 0 16px 48px 0 #fbbf24cc, 0 0 32px 8px #fbbf24cc;
+      transform: translateY(-2px) scale(1.04);
+    }
   </style>
 </head>
 <body>
@@ -193,6 +217,74 @@ Given the attached codebase.txt (which contains all real data, logic, API endpoi
 
 Do NOT change any data, casino order, or API endpoints. Only change the theme, branding, and site description to make the site unique. Use only vanilla JS, HTML, and CSS. Output a ready-to-deploy codebase.
 </pre>
+    </div>
+    <div class="section">
+      <div class="section-title">AI Agent Instructions</div>
+      <button class="copy-btn" onclick="copyCode('ai-instructions-box')">Copy</button>
+      <pre class="codebox" id="ai-instructions-box">// AI Agent Instructions for One-Prompt Site Generation
+
+1. Source of Truth
+   - Treat the provided codebase.txt as the ONLY source of data, structure, logic, and API endpoints.
+   - Do NOT invent new casinos, promotions, or data. Do NOT change the order of casinos or their links/logos.
+   - Use all real API endpoints, especially for Petra.bet promotions:
+     - English: https://petra.bet/x/api/promotions/public?locale=en
+     - Arabic: https://petra.bet/x/api/promotions/public?locale=ar
+
+2. Theme & Branding
+   - Change the color palette, gradients, and branding (logo, favicon, meta, tagline) to make the site visually unique.
+   - Do NOT use the original gold/blue theme. Choose a new luxury color scheme (e.g. emerald/teal, purple/silver, etc.).
+   - Adjust card shapes, border radii, and section layouts for a fresh look, but keep all features and sections.
+
+3. Content Uniqueness
+   - Rewrite or paraphrase ALL static text (site description, reviews, meta, user reviews, etc.) to ensure uniqueness and avoid duplication.
+   - Do NOT change the meaning, data, or order—only the wording and style.
+   - All content must remain in a data.json file for easy translation.
+
+4. Bilingual & Accessibility
+   - The site must be fully bilingual (English/Arabic), with persistent language switching and correct LTR/RTL support.
+   - All accessibility features (keyboard navigation, focus states, ARIA labels, etc.) must be preserved or improved.
+
+5. Data-Driven & API Integration
+   - Use the same data-driven approach as in the codebase: all reviews, rankings, bonuses, etc. must be in data.json.
+   - Integrate the Petra.bet promotions API for both EN and AR as in the original site.
+   - Do NOT invent new endpoints or change the API logic.
+
+6. Output Format
+   - Output each file as a clearly labeled code block, e.g.:
+     // ===== FILE: index.html =====
+     [code]
+     // ===== FILE: style.css =====
+     [code]
+     // ===== FILE: data.json =====
+     [code]
+     ...etc.
+   - Ensure the output is complete, production-ready, and ready to deploy.
+
+7. No Frameworks
+   - Use only vanilla JS, HTML, and CSS. Do NOT use frameworks or libraries unless they are present in the original codebase.
+
+8. Quality & Testing
+   - Double-check that all links, language switching, and API integrations work as expected.
+   - Ensure the site is responsive, fast, and visually appealing on all devices.
+
+9. If Uncertain
+   - If any instruction is unclear, or if you encounter missing or ambiguous data, ask for clarification before proceeding.
+
+10. Final Check
+    - The final site must be unique in appearance and wording, but identical in data, structure, and logic to the original—except for the required theme and content changes.
+</pre>
+    </div>
+    <div class="section">
+      <div class="section-title">AI Site Maker Platforms</div>
+      <div class="ai-site-maker-buttons" style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:1.2rem;">
+        <a class="ai-site-btn" href="https://bolt.new/" target="_blank" rel="noopener">BOLT</a>
+        <a class="ai-site-btn" href="https://lovable.dev/" target="_blank" rel="noopener">LOVABLE</a>
+        <a class="ai-site-btn" href="https://bubble.io/" target="_blank" rel="noopener">BUBBLE</a>
+        <a class="ai-site-btn" href="https://mgx.dev/" target="_blank" rel="noopener">MGX</a>
+        <a class="ai-site-btn" href="https://databutton.com/" target="_blank" rel="noopener">DBUT</a>
+        <a class="ai-site-btn" href="https://chatgpt.com/" target="_blank" rel="noopener">CHATGPT</a>
+        <a class="ai-site-btn" href="https://huggingface.co/spaces" target="_blank" rel="noopener">HUGGINGFACE SPACES</a>
+      </div>
     </div>
   </div>
   <script>
