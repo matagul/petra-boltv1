@@ -72,10 +72,16 @@ body {
     overflow-y: scroll !important;
 }
 
+body.information-page {
+    background: transparent !important;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    position: relative;
+    z-index: 10;
 }
 
 /* Parallax Background System */
@@ -163,16 +169,18 @@ body {
 
 /* Enhanced Header with Glass Effect */
 .header {
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.85);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid rgba(251, 191, 36, 0.13);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
     transition: all var(--transition-normal);
+    position: relative;
+    z-index: 10;
 }
 
 .header.scrolled {
@@ -218,6 +226,7 @@ body {
     display: flex;
     gap: var(--spacing-xs);
     background: rgba(51, 65, 85, 0.3);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: var(--spacing-xs);
@@ -408,6 +417,7 @@ body {
     background: rgba(51, 65, 85, 0.3);
     color: var(--luxury-white);
     border: 2px solid rgba(251, 191, 36, 0.3);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -427,47 +437,64 @@ body {
 
 /* Floating Elements */
 .floating-elements {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
     z-index: 1;
 }
-
+.floating-gradient-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(120deg, #fbbf24 0%, #232946 50%, #1a1a2e 100%);
+    background-size: 200% 200%;
+    animation: luxuryGradientMove 12s ease-in-out infinite;
+    opacity: 0.85;
+    filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+}
+@keyframes luxuryGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 .floating-card {
     position: absolute;
-    font-size: var(--font-size-3xl);
-    opacity: 0.6;
+    z-index: 1;
+    font-size: 2.6rem;
+    opacity: 0.92;
+    filter: blur(2.5px) drop-shadow(0 0 18px rgba(251,191,36,0.33));
     animation: floatingCard 8s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+    transition: opacity 0.3s, filter 0.3s;
 }
-
+.floating-card:hover {
+    opacity: 1;
+    filter: blur(2.5px) drop-shadow(0 0 32px #fbbf24cc);
+}
 .floating-card:nth-child(1) {
     top: 20%;
     left: 10%;
     animation-delay: 0s;
 }
-
 .floating-card:nth-child(2) {
     top: 30%;
     right: 15%;
     animation-delay: -2s;
 }
-
 .floating-card:nth-child(3) {
     bottom: 30%;
     left: 20%;
     animation-delay: -4s;
 }
-
 .floating-card:nth-child(4) {
     bottom: 20%;
     right: 10%;
     animation-delay: -6s;
 }
-
 @keyframes floatingCard {
     0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
     25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
@@ -516,8 +543,8 @@ body {
     overflow-x: auto;
     border-radius: 16px;
     background: rgba(51, 65, 85, 0.3);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(251, 191, 36, 0.2);
     box-shadow: var(--shadow-luxury);
     transition: all var(--transition-luxury);
@@ -1364,6 +1391,7 @@ a:focus,
   background: linear-gradient(120deg, rgba(35,41,70,0.85) 60%, rgba(251,191,36,0.13) 100%);
   border-radius: 32px 32px 18px 18px;
   box-shadow: 0 12px 48px 0 #fbbf2433, 0 0 0 4px #fbbf2411;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
   backdrop-filter: blur(18px) saturate(1.2);
   border: 3.5px solid #fbbf24;
   position: relative;
@@ -1538,6 +1566,7 @@ h3 {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(15,23,42,0.75);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   z-index: 2000;
   transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
@@ -1550,22 +1579,21 @@ h3 {
 }
 #luxury-popup {
   position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%) scale(0.85);
-  opacity: 0;
-  z-index: 2100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
   min-width: 320px;
   max-width: 95vw;
-  background: linear-gradient(120deg, rgba(35,41,70,0.97) 60%, rgba(251,191,36,0.18) 100%);
-  border-radius: 28px;
-  box-shadow: 0 12px 48px 0 #fbbf2433, 0 0 0 4px #fbbf2411;
-  border: 3.5px solid #fbbf24;
-  padding: 2.5rem 2.2rem 2rem 2.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  background: rgba(30, 41, 59, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
+  border: 2.5px solid #fbbf24;
+  z-index: 9999;
+  opacity: 0;
   pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.68,-0.55,0.27,1.55);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
 #luxury-popup.active {
   opacity: 1;
@@ -1634,17 +1662,15 @@ h3 {
 
 /* Glassy Frame for Casino Logos */
 .glassy-frame {
-  background: rgba(35,41,70,0.55);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
-  border-radius: 32px;
-  box-shadow: 0 8px 32px 0 #fbbf2433, 0 0 0 4px #fbbf2411;
-  border: 2.5px solid rgba(251,191,36,0.18);
-  padding: 1.5rem 2.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  border: 1.5px solid rgba(251,191,36,0.18);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  padding: 2.2rem 2.2rem 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .petra-gold-frame {
@@ -1726,4 +1752,8 @@ h3 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2.5rem 3rem;
   }
+}
+
+.info-section {
+    background: transparent !important;
 }

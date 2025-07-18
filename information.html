@@ -117,15 +117,11 @@
       }
     </style>
 </head>
-<body>
-  <div class="parallax-bg">
-    <div class="parallax-layer" data-speed="0.2"></div>
-    <div class="parallax-layer" data-speed="0.5"></div>
-    <div class="parallax-layer" data-speed="0.8"></div>
-  </div>
+<body class="information-page">
   <div id="particles-container"></div>
   <!-- Casino floating elements -->
   <div class="floating-elements">
+    <div class="floating-gradient-bg"></div>
     <div class="floating-card" data-float-speed="2">💎</div>
     <div class="floating-card" data-float-speed="2.5">🃏</div>
     <div class="floating-card" data-float-speed="1.7">🎲</div>
@@ -226,6 +222,8 @@
       </div>
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="information.js"></script>
   <script>
     function setActiveLangMenu(lang) {

@@ -178,7 +178,41 @@ document.addEventListener('DOMContentLoaded', function() {
       setAffiliateAccordionText(currentLang, open);
     });
   }
+  // Floating elements animation
+  setupFloatingElements();
 });
+
+function setupFloatingElements() {
+  if (typeof gsap === 'undefined') return;
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+  const floatingCards = document.querySelectorAll('.floating-card');
+  floatingCards.forEach((card) => {
+    const speed = parseFloat(card.dataset.floatSpeed) || 2;
+    // Continuous floating animation
+    gsap.to(card, {
+      y: -30,
+      rotation: 5,
+      duration: speed,
+      ease: "power2.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+    // Parallax movement on scroll
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.to(card, {
+        y: -50 * (speed / 2),
+        scrollTrigger: {
+          trigger: "body",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1
+        }
+      });
+    }
+  });
+}
 
 function renderAllPromos(lang) {
   setActiveLang(lang);
