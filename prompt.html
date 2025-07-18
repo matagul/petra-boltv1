@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petra.bet Site Generator Prompt</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+      color: #fffbe7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .prompt-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 3rem auto;
+      background: rgba(30,41,59,0.98);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
+      border: 2.5px solid #fbbf24;
+      padding: 2.5rem 2rem 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #fbbf24 60%, #ffe9a8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 2.2rem;
+      letter-spacing: 1.5px;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffe9a8;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 1px 8px #fbbf24a0;
+      letter-spacing: 1px;
+    }
+    .codebox {
+      background: #181828;
+      color: #ffe9a8;
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+      font-size: 1.01rem;
+      border-radius: 12px;
+      border: 1.5px solid #fbbf24;
+      box-shadow: 0 4px 18px 0 rgba(251,191,36,0.10);
+      padding: 1.2rem 1rem 1rem 1rem;
+      width: 100%;
+      min-height: 220px;
+      max-height: 420px;
+      overflow: auto;
+      margin-bottom: 1.2rem;
+      position: relative;
+      white-space: pre;
+      resize: vertical;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.2rem;
+      background: linear-gradient(90deg, #fbbf24 60%, #ffe9a8 100%);
+      color: #232946;
+      border: none;
+      border-radius: 7px;
+      padding: 0.4rem 1.1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(251,191,36,0.13);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      z-index: 2;
+    }
+    .copy-btn:active {
+      background: #ffe9a8;
+      color: #fbbf24;
+    }
+    .download-btn {
+      position: absolute;
+      top: 1.1rem;
+      right: 6.5rem;
+      background: linear-gradient(90deg, #ffe9a8 60%, #fbbf24 100%);
+      color: #232946;
+      border: none;
+      border-radius: 7px;
+      padding: 0.4rem 1.1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(251,191,36,0.13);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      z-index: 2;
+    }
+    .download-btn:active {
+      background: #fbbf24;
+      color: #ffe9a8;
+    }
+    .section {
+      margin-bottom: 2.8rem;
+      position: relative;
+    }
+    @media (max-width: 700px) {
+      .prompt-container {
+        padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+      }
+      .codebox {
+        font-size: 0.93rem;
+        padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="prompt-container">
+    <h1>Petra.bet Site Generator Prompt</h1>
+    <div class="section">
+      <div class="section-title">Full Codebase (Copy All)</div>
+      <button class="download-btn" onclick="downloadCode('codebase-box')">Download</button>
+      <button class="copy-btn" onclick="copyCode('codebase-box')">Copy</button>
+      <pre class="codebox" id="codebase-box"></pre>
+    </div>
+    <div class="section">
+      <div class="section-title">Site Generation Prompt (for GPT, Copy All)</div>
+      <button class="copy-btn" onclick="copyCode('prompt-box')">Copy</button>
+      <pre class="codebox" id="prompt-box">You are a world-class web developer and designer.
+
+Your task:
+Generate a complete, production-ready, bilingual (English/Arabic, LTR/RTL) casino review website, based on the codebase provided in the codebase.txt file (attached below). The codebase.txt contains all real data, casino lists, API endpoints, and logic for Petra.bet and its competitors. Use this as the authoritative source for:
+- The list of casinos, their order, and all review/ranking data (do NOT invent new casinos or change their order).
+- All real logos, links, and data for Petra.bet and competitors.
+- The same Petra.bet API endpoints for promotions and bonuses:
+  - English: https://petra.bet/x/api/promotions/public?locale=en
+  - Arabic: https://petra.bet/x/api/promotions/public?locale=ar
+- All content, reviews, and translations as provided in data.json.
+
+Your job is to:
+- Change the theme: use a new color palette (e.g. emerald/teal, purple/silver, or another luxury combo—do NOT use the original gold/blue), new gradients, and new button/background effects.
+- Change the site description and branding to make it unique (e.g. new tagline, new meta description, new favicon/logo emoji or SVG), but keep the same casino data and structure.
+- Adjust some layout details (e.g. card shapes, border radii, or section order) to make the site visually distinct, but keep all features and sections.
+- Use all real casino links and static values (e.g. review text, meta, descriptions, user reviews, etc.) from the codebase, but rewrite or modify all static text to make it unique and not a direct copy. Do NOT change the order, links, or logos—only the text content for uniqueness.
+- Keep all translation, accessibility, and data-driven features.
+- All content (reviews, rankings, bonuses, etc.) must remain in a data.json file for easy translation.
+- The site must support persistent language switching (EN/AR), with RTL for Arabic.
+- Use only vanilla JS, HTML, and CSS (no frameworks).
+- Output all files as labeled code blocks, e.g.:
+  // ===== FILE: index.html =====
+  [code]
+  // ===== FILE: style.css =====
+  [code]
+  // ===== FILE: data.json =====
+  [code]
+  ...etc.
+
+You will be provided with the full codebase as a text file (codebase.txt). Use it as the source for all content, casinos, API endpoints, and logic. Only change the theme, branding, and all static text to make the site unique. Do NOT change the casino data, order, links, or API endpoints.
+
+Your output should be a new, unique, production-ready codebase, ready to deploy.</pre>
+    </div>
+    <div class="section">
+      <div class="section-title">Alternative: Ultra-Concise Site Generation Prompt</div>
+      <button class="copy-btn" onclick="copyCode('alt-prompt-box')">Copy</button>
+      <pre class="codebox" id="alt-prompt-box">You are an expert web developer.
+
+Given the attached codebase.txt (which contains all real data, logic, API endpoints, and structure for a bilingual casino review site), generate a new, production-ready, bilingual (EN/AR, LTR/RTL) casino review website with the following requirements:
+
+- Use the exact same casino list, order, reviews, translations, and API endpoints as in codebase.txt. Do NOT invent or change any data, logic, or endpoints.
+- Only change the theme: use a new color palette, gradients, and branding (new logo/favicon, new meta description/tagline, new button/background styles).
+- Adjust some layout details (e.g. card shapes, border radii, or section order) to make the site visually unique, but keep all features and sections.
+- All translation, accessibility, and data-driven features must be preserved.
+- All content must remain in a data.json file for easy translation.
+- Output all files as labeled code blocks, e.g.:
+  // ===== FILE: index.html =====
+  [code]
+  // ===== FILE: style.css =====
+  [code]
+  // ===== FILE: data.json =====
+  [code]
+  ...etc.
+
+Do NOT change any data, casino order, or API endpoints. Only change the theme, branding, and site description to make the site unique. Use only vanilla JS, HTML, and CSS. Output a ready-to-deploy codebase.
+</pre>
+    </div>
+  </div>
+  <script>
+    function copyCode(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const text = el.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = el.parentElement.querySelector('.copy-btn');
+        if (btn) {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 1200);
+        }
+      });
+    }
+
+    function downloadCode(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const text = el.textContent;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'codebase.txt';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }
+
+    const files = [
+      "index.html",
+      "games.html",
+      "information.html",
+      "app.js",
+      "games.js",
+      "information.js",
+      "counter.js",
+      "style.css",
+      "data.json",
+      "package.json",
+      "README.md"
+    ];
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+    }
+
+    async function loadCodebase() {
+      let code = "";
+      for (const file of files) {
+        try {
+          const res = await fetch(file);
+          if (!res.ok) throw new Error();
+          const text = await res.text();
+          code += `// ===== FILE: ${file} =====\n${escapeHtml(text)}\n\n`;
+        } catch {
+          code += `// ===== FILE: ${file} =====\n[Could not load file]\n\n`;
+        }
+      }
+      document.getElementById("codebase-box").textContent = code;
+    }
+
+    window.addEventListener("DOMContentLoaded", loadCodebase);
+  </script>
+</body>
+</html> 
